@@ -16,7 +16,7 @@ In your ROS_PACKAGE_PATH (check your environment variable ROS_PACKAGE_PATH):
 
 ## Usage:
 
-	rosrun rosbag_unpacker rosbag_unpacker -i /PATH/TO/INPUT.BAG -o /PATH/TO/OUTPUT/FOLDER/
+	roslaunch rosbag_unpacker rosbag_unpacker.launch path:=/PATH/TO/DIRECTORY/ file:=INPUT.BAG
 
 - `PATH_TO_FOLDER`: Path to the folder with the images and/or the depths
 - `PATH_TO_INPUT_BAG`: Path to the bag (including the filename e.g. directory/filename.bag)

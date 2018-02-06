@@ -71,7 +71,7 @@ void Communicator::callback_rgb(const sensor_msgs::ImageConstPtr& msg_rgb){
 
 	cv::Mat& color = img_ptr_rgb->image;
 	cv::imwrite(ss.str(), color);
-	file_rgb << msg_rgb->header.stamp << "rgb/" << msg_rgb->header.stamp << ".png" << std::endl;
+	file_rgb << msg_rgb->header.stamp << " rgb/" << msg_rgb->header.stamp << ".png" << std::endl;
 }
 
 void Communicator::callback_depth(const sensor_msgs::ImageConstPtr& msg_depth){
@@ -90,7 +90,7 @@ void Communicator::callback_depth(const sensor_msgs::ImageConstPtr& msg_depth){
 
 	cv::Mat& depth = img_ptr_depth->image;
 	cv::imwrite(ss.str(), depth);
-	file_depth << msg_depth->header.stamp << "depth/" << msg_depth->header.stamp << ".png" << std::endl;
+	file_depth << msg_depth->header.stamp << " depth/" << msg_depth->header.stamp << ".png" << std::endl;
 }
 
 int main(int argc, char * argv[]){
