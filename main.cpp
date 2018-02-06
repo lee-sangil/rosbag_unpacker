@@ -15,6 +15,7 @@ class Communicator{
 			if( !Parser::hasOption("-i") || !Parser::hasOption("-o") ){
 				std::cout << "Mandatory -i: /Path/to/input.bag.\n"
 					"Mandatory -o: /Path/to/directory/.\n"
+					"Optional -s: depth scale.\n"
 					"Example: rosrun rosbag_unpacker rosbag_unpacker -i /path/to/input.bag -o /path/to/directory/" << std::endl;
 				return;
 			}
@@ -89,6 +90,9 @@ void Communicator::callback_depth(const sensor_msgs::ImageConstPtr& msg_depth){
 	ss << Parser::getStringOption("-o") << "depth/" << msg_depth->header.stamp << ".png";
 
 	cv::Mat& depth = img_ptr_depth->image;
+	depth /= Parser::getFloatOption("-s", 0.001);
+	depth.convertTo(depth,CV_16UC1);
+
 	cv::imwrite(ss.str(), depth);
 	file_depth << msg_depth->header.stamp << " depth/" << msg_depth->header.stamp << ".png" << std::endl;
 }
