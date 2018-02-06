@@ -36,7 +36,7 @@ class Communicator{
 			file_rgb << "# color images" << std::endl << "# file" << std::endl << "# timestamp filename" << std::endl;
 			file_depth << "# depth images" << std::endl << "# file" << std::endl << "# timestamp filename" << std::endl;
 			file_caminfo << "# Camera name: " << std::endl;
-			is_logged_caminfo = bool;
+			is_logged_caminfo = false;
 
 			sub_rgb = it.subscribe( Parser::getStringOption("-ti", "/camera/rgb/image_color"), 1, &Communicator::callback_rgb, this);
 			sub_depth = it.subscribe( Parser::getStringOption("-td", "/camera/depth/image"), 1, &Communicator::callback_depth, this);
