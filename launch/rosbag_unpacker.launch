@@ -1,0 +1,11 @@
+<launch>
+
+<arg name="file" default="odometry_6.bag"/>
+<arg name="path" default="/media/icsl/DFD6-79B1/odometry_6/"/>
+<arg name="image" default="/camera/rgb/image_color"/>
+<arg name="depth" default="/camera/depth/image"/>
+
+<node pkg="rosbag_unpacker" name="rosbag_unpacker" type="rosbag_unpacker" args="-i $(arg path)$(arg file) -o $(arg path) -ti $(arg image) -td $(arg depth)" output="screen"/>
+<node pkg="rosbag" type="play" name="player" output="screen" args="-r 0.1 $(arg path)$(arg file)"/>
+
+</launch>
